@@ -75,10 +75,34 @@ exports.remove = async (req, res) => {
 };
 
 exports.list = async (req, res) => {
-  const posts = await prisma.post.findMany();
+  const { page = 1, limit = 10, orderBy = "desc", search } = req.query;
+  const parsedPage = parseInt(page);
+  const parsedPageSize = parseInt(limit);
+
+  const count = await prisma.post.count();
+
+  const posts = await prisma.post.findMany({
+    skip: (parsedPage - 1) * parsedPageSize,
+    take: parsedPageSize,
+    orderBy: {
+      createdAt: orderBy,
+    },
+    where: {
+      OR: [
+        {
+          description: {
+            contains: search ?? "",
+            mode: "insensitive",
+          },
+        },
+      ],
+    },
+  });
 
   res.json({
-    status: "success",
+    count,
+    limit: parsedPageSize,
+    page: parsedPage,
     data: posts,
   });
 };

@@ -15,12 +15,12 @@ model User {
   name     String
   password String
   email    String @unique
-  role     Role   @default(USER)
+  role     Role   @default(user)
 }
 
 enum Role {
-  USER
-  ADMIN
+  user
+  admin
 }
 
 model Post {
