@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const { list } = require("../../controllers/admin/postController");
+const { list } = require("../../controllers/public/postController");
 
 router.get("/list", list);
 

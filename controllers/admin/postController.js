@@ -85,7 +85,7 @@ exports.list = async (req, res) => {
     skip: (parsedPage - 1) * parsedPageSize,
     take: parsedPageSize,
     orderBy: {
-      createdAt: orderBy,
+      updatedAt: orderBy,
     },
     where: {
       OR: [
