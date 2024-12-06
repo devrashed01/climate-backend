@@ -1,0 +1,30 @@
+{
+  "editor.formatOnSave": true,
+  "javascript.validate.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.tslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "eslint.alwaysShowStatus": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "folder-path-color.folders": [
+    {
+      "path": "routes/admin",
+      "color": "red"
+    },
+    { "path": "routes/", "color": "green" },
+    {
+      "path": "controllers/admin",
+      "color": "red"
+    },
+    {
+      "path": "controllers/user",
+      "color": "green"
+    },
+    { "path": "controllers/auth", "color": "blue" }
+  ],
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
+}
