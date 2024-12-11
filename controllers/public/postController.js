@@ -10,3 +10,20 @@ exports.list = async (req, res) => {
 
   res.json(posts);
 };
+
+exports.detail = async (req, res) => {
+  const { id } = req.params;
+  const post = await prisma.post.findUnique({
+    where: {
+      id,
+    },
+  });
+
+  if (!post) {
+    return res.status(404).json({
+      message: "Post could not found!",
+    });
+  }
+
+  res.json(post);
+};
